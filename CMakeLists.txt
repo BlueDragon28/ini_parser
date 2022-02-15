@@ -15,8 +15,8 @@ set(SOURCES
     "src/ini_parser.cpp")
 
 if (BUILD_STATIC_LIBS)
-    add_library(ini_parser STATIC ${SOURCES})
-    set_target_properties(ini_parser PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
+    add_library(ini_parser_static STATIC ${SOURCES})
+    set_target_properties(ini_parser_static PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 endif()
 if(BUILD_SHARED_LIBS)
     add_library(ini_parser SHARED ${SOURCES})
