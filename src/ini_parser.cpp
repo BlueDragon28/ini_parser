@@ -114,11 +114,19 @@ void ini_parser::parseLine(const std::string& line, std::string& currentSection)
             paramName.append(
                 copyLine.cbegin(),
                 std::next(copyLine.cbegin(), pos));
+
+            size_t valueEndPos = copyLine.find_first_of('#');
+            std::string::const_iterator valueIt;
+
+            if (valueEndPos < copyLine.size())
+                valueIt = std::next(copyLine.cbegin(), valueEndPos);
+            else
+                valueIt = copyLine.cend();
             
             if (pos+1 < copyLine.size())
                 valueName.append(
                     std::next(copyLine.cbegin(), pos+1),
-                    copyLine.cend());
+                    valueIt);
                 
             removeSpaces(paramName);
             removeSpaces(valueName);
