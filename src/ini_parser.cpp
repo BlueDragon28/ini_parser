@@ -75,19 +75,23 @@ void ini_parser::parseLine(const std::string& line, std::string& currentSection)
     // Parsing a single line of a ini file.
     if (line.size() == 0)
         return;
+
+    // Create a copy of the line and removing the first spaces.
+    std::string copyLine = line;
+    removeFirstSpaces(copyLine);
     
     // Retrieve the section name.
-    if (line.at(0) == '#')
+    if (copyLine.at(0) == '#')
         return;
-    else if (line.at(0) == '[')
+    else if (copyLine.at(0) == '[')
     {
-        size_t pos = line.find_first_of(']');
-        if (pos < line.size())
+        size_t pos = copyLine.find_first_of(']');
+        if (pos < copyLine.size())
         {
             currentSection.clear();
             currentSection.append(
-                std::next(line.cbegin(), 1),
-                std::next(line.cbegin(), pos));
+                std::next(copyLine.cbegin(), 1),
+                std::next(copyLine.cbegin(), pos));
             removeSpaces(currentSection);
         }
     }
@@ -101,20 +105,20 @@ void ini_parser::parseLine(const std::string& line, std::string& currentSection)
         if (currentSection.empty())
             return;
 
-        size_t pos = line.find_first_of('=');
-        if (pos < line.size() && pos > 0)
+        size_t pos = copyLine.find_first_of('=');
+        if (pos < copyLine.size() && pos > 0)
         {
             std::string paramName;
             std::string valueName;
 
             paramName.append(
-                line.cbegin(),
-                std::next(line.cbegin(), pos));
+                copyLine.cbegin(),
+                std::next(copyLine.cbegin(), pos));
             
-            if (pos+1 < line.size())
+            if (pos+1 < copyLine.size())
                 valueName.append(
-                    std::next(line.cbegin(), pos+1),
-                    line.cend());
+                    std::next(copyLine.cbegin(), pos+1),
+                    copyLine.cend());
                 
             removeSpaces(paramName);
             removeSpaces(valueName);
