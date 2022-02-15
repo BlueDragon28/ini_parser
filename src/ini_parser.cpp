@@ -267,7 +267,7 @@ void ini_parser::removeSpaces(std::string& value)
          rit++)
     {
         if (*rit == ' ')
-            value.erase(rit.base());
+            value.erase((rit+1).base());
         else
             break;
     }
