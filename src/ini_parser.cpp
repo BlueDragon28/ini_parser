@@ -253,13 +253,7 @@ void ini_parser::removeSpaces(std::string& value)
 {
     // Removing the first and the last spaces from a string.
     // Removing the first spaces.
-    while (value.size() > 0)
-    {
-        if (value.at(0) == ' ')
-            value.erase(0, 1);
-        else
-            break;
-    }
+    removeFirstSpaces(value);
 
     // Removing the last spaces.
     for (std::string::const_reverse_iterator rit = value.crbegin();
@@ -268,6 +262,18 @@ void ini_parser::removeSpaces(std::string& value)
     {
         if (*rit == ' ')
             value.erase((rit+1).base());
+        else
+            break;
+    }
+}
+
+void ini_parser::removeFirstSpaces(std::string& value)
+{
+    // Removing only the first spaces from a string.
+    while (value.size() > 0)
+    {
+        if (value.at(0) == ' ')
+            value.erase(0, 1);
         else
             break;
     }

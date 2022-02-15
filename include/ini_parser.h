@@ -103,6 +103,10 @@ protected:
     Remove the first and last spaces of a string.
     */
     static void removeSpaces(std::string& value);
+    /*
+    Remove only the first space of a string.
+    */
+    static void removeFirstSpaces(std::string& value);
 
 private:
     /*
