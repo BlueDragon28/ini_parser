@@ -6,8 +6,8 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Build the library static or shared.
-option(BUILD_STATIC_LIBS ON)
-option(BUILD_SHARED_LIBS OFF)
+option(BUILD_STATIC_LIBS "Build static lib" ON)
+option(BUILD_SHARED_LIBS "Build shared lib" OFF)
 
 include_directories(include/)
 
