@@ -352,7 +352,11 @@ const std::string& ini_parser::getValue(const std::string& section, const std::s
     }
 
     if (pSection == nullptr)
+    {
+        if (isExist)
+            *isExist = false;
         return m_nullString;
+    }
     
     // Find parameters
     const Parameter* pParameters = nullptr;
@@ -368,9 +372,15 @@ const std::string& ini_parser::getValue(const std::string& section, const std::s
     }
 
     if (pParameters == nullptr)
+    {
+        if (isExist)
+            *isExist = false;
         return m_nullString;
-    else
-        return pParameters->value;
+    }
+    
+    if (isExist)
+        *isExist = true;
+    return pParameters->value;
 }
 
 void ini_parser::setIniFile(const char* iniFile, bool isFile)
