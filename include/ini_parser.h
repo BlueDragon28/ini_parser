@@ -46,6 +46,7 @@ public:
     ini_parser();
     ini_parser(const char* iniFile, bool isFile = true);
     ini_parser(const std::string& iniFile, bool isFile = true);
+    ~ini_parser();
 
     /*
     Return the ini file path or data.

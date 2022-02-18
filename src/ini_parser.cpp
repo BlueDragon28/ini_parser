@@ -49,6 +49,9 @@ ini_parser::ini_parser(const std::string& iniFile, bool isFile) :
     parse();
 }
 
+ini_parser::~ini_parser()
+{}
+
 void ini_parser::parse()
 {
     // Check if the m_iniFile is a file path or a file data.
