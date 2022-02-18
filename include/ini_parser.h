@@ -81,17 +81,17 @@ protected:
     Check whether to parse has a file
     or has a data.
     */
-    void parse();
+    virtual void parse();
     /*
     Parse has a file.
     */
-    void parseFile();
+    virtual void parseFile();
     /*
     Parse as a data. (the data 
     of a ini file have been passed into the parameters iniFile
     of the constructor).
     */
-    void parseData();
+    virtual void parseData();
     
     /*
     Parse a single line of the ini data.
