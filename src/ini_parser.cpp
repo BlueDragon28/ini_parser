@@ -126,11 +126,10 @@ void ini_parser::parseLine(const std::string& line, std::string& currentSection)
     else
     {
         /*
-        Do not parse parameters if there are no attached
-        to any sections.
+        Allow parameters to be attach to any sections.
+        This can be usefull if to use the library
+        has a simple config file.
         */
-        if (currentSection.empty())
-            return;
 
         size_t pos = copyLine.find_first_of('=');
         if (pos < copyLine.size() && pos > 0)
