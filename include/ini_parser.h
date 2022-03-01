@@ -70,6 +70,14 @@ public:
     */
     const char* getValue(const char* section, const char* parameters, bool* isExist = nullptr) const;
     const std::string& getValue(const std::string& section, const std::string& parameters, bool* isExist = nullptr) const;
+    /*
+    Return the value of the parameters (parameters)
+    that is not attached to any sections.
+
+    Usefull when using the library has a simple config parser.
+    */
+    const char* getValue(const char* parameters, bool* isExist = nullptr) const;
+    const std::string& getValue(const std::string& parameters, bool* isExist = nullptr) const;
 
     /*
     Set the ini file path or data and parse it.

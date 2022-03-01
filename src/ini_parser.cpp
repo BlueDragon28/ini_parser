@@ -385,6 +385,16 @@ const std::string& ini_parser::getValue(const std::string& section, const std::s
     return pParameters->value;
 }
 
+const char* ini_parser::getValue(const char* parameters, bool* isExist) const
+{
+    return getValue(std::string(parameters), isExist).c_str();
+}
+
+const std::string& ini_parser::getValue(const std::string& parameters, bool* isExist) const
+{
+    return getValue(std::string(), parameters, isExist);
+}
+
 void ini_parser::setIniFile(const char* iniFile, bool isFile)
 {
     m_iniFile = iniFile;
