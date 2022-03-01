@@ -56,12 +56,25 @@ void setIniFile(const char* iniFile, bool isFile);
 void setIniFile(const std::string& iniFile, bool isFile);
 ```
 
+## Use for a regular **.conf** file
+
+The library can also be used for regular **.conf** file that do not have any sections. The parameters of this file are attached to a section with an empty name string. To retrieve this parameters, there is an override of **getValue** :
+
+``` C++
+const char* getValue(const char* parameters, bool* isExist = nullptr) const;
+const std::string& getValue(const std::string& parameters, bool* isExist = nullptr) const;
+```
+
 # Syntax
 
 The library support a flexible `.ini` file syntax, here an exemple of what possible :
 
 ``` INI
 # A Comment
+
+# Param not attached to any sections.
+MyParam = My Value
+
 [Section1]
 Param1=Value1
 
