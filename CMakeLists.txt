@@ -21,7 +21,9 @@
 # SOFTWARE.
 
 cmake_minimum_required(VERSION 3.16.0)
-project(ini_parser LANGUAGES CXX)
+project(ini_parser 
+    VERSION 0.1
+    LANGUAGES CXX)
 
 # enable c++11 standard
 set(CMAKE_CXX_STANDARD 11)
@@ -58,4 +60,4 @@ if(BUILD_SHARED_LIBS)
 endif()
 
 install (FILES ${CMAKE_SOURCE_DIR}/include/ini_parser.h
-         DESTINATION include)
+         DESTINATION include/ini_parser)
