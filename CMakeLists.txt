@@ -66,6 +66,14 @@ endif()
 install (FILES ${CMAKE_SOURCE_DIR}/include/ini_parser.h
          DESTINATION include/ini_parser)
 
+# pkg-config file.
+if (BUILD_STATIC_LIBS)
+    configure_file(${CMAKE_SOURCE_DIR}/ini_parser_static.pc.in
+        ${CMAKE_BINARY_DIR}/ini_parser_static.pc
+        @ONLY)
+    install (FILES ${CMAKE_BINARY_DIR}/ini_parser_static.pc
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+endif()
 if (BUILD_SHARED_LIBS)
     configure_file(${CMAKE_SOURCE_DIR}/ini_parser.pc.in 
         ${CMAKE_BINARY_DIR}/ini_parser.pc
