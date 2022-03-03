@@ -33,6 +33,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Build the library static or shared.
 option(BUILD_STATIC_LIBS "Build static lib" ON)
 option(BUILD_SHARED_LIBS "Build shared lib" OFF)
+if ((NOT DEFINED CMAKE_INSTALL_LIBDIR) OR (CMAKE_INSTALL_LIBDIR STREQUAL ""))
+    set(CMAKE_INSTALL_LIBDIR lib)
+endif()
 
 include_directories(include/)
 
@@ -42,20 +45,20 @@ set(SOURCES
 if (BUILD_STATIC_LIBS)
     add_library(ini_parser_static STATIC ${SOURCES})
     set_target_properties(ini_parser_static PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
-    install(TARGETS ini_parser_static DESTINATION bin)
+    install(TARGETS ini_parser_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
 endif()
 if(BUILD_SHARED_LIBS)
     add_library(ini_parser SHARED ${SOURCES})
     if (WIN32)
         set_target_properties(ini_parser PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
         install(TARGETS ini_parser
-                ARCHIVE DESTINATION bin
+                ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
                 LIBRARY DESTINATION bin)
     else() 
         set_target_properties(ini_parser PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
         install(TARGETS ini_parser
-                ARCHIVE DESTINATION bin
-                LIBRARY DESTINATION bin)
+                ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+                LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
     endif()
     set_target_properties(ini_parser PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 endif()
