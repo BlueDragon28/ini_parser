@@ -42,23 +42,32 @@ set(SOURCES
 if (BUILD_STATIC_LIBS)
     add_library(ini_parser_static STATIC ${SOURCES})
     set_target_properties(ini_parser_static PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
-    install(TARGETS ini_parser_static DESTINATION lib)
+    install(TARGETS ini_parser_static DESTINATION bin)
 endif()
 if(BUILD_SHARED_LIBS)
     add_library(ini_parser SHARED ${SOURCES})
     if (WIN32)
         set_target_properties(ini_parser PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
         install(TARGETS ini_parser
-                ARCHIVE DESTINATION lib
+                ARCHIVE DESTINATION bin
                 LIBRARY DESTINATION bin)
     else() 
         set_target_properties(ini_parser PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
         install(TARGETS ini_parser
-                ARCHIVE DESTINATION lib
-                LIBRARY DESTINATION lib)
+                ARCHIVE DESTINATION bin
+                LIBRARY DESTINATION bin)
     endif()
     set_target_properties(ini_parser PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 endif()
 
 install (FILES ${CMAKE_SOURCE_DIR}/include/ini_parser.h
          DESTINATION include/ini_parser)
+
+if (BUILD_SHARED_LIBS)
+    configure_file(${CMAKE_SOURCE_DIR}/ini_parser.pc.in 
+        ${CMAKE_BINARY_DIR}/ini_parser.pc
+        @ONLY)
+    install (FILES ${CMAKE_BINARY_DIR}/ini_parser.pc
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+endif()
+

@@ -1,0 +1,9 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+includedir=${prefix}/include/ini_parser
+libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+
+Name: ini_parser
+Version: @CMAKE_PROJECT_VERSION@
+Cflags: -I${includedir}
+Libs: -L${libdir} -lini_parser
