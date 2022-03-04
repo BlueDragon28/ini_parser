@@ -24,6 +24,7 @@ cmake_minimum_required(VERSION 3.16.0)
 project(ini_parser 
     VERSION 0.1
     HOMEPAGE_URL "https://github.com/BlueDragon28/ini_parser"
+    DESCRIPTION "A simple C++ library to open and parse .ini file"
     LANGUAGES CXX)
 
 # enable c++11 standard

@@ -1,7 +1,7 @@
 prefix=@CMAKE_INSTALL_PREFIX@
 exec_prefix=${prefix}
-includedir=${prefix}/include/ini_parser
 libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+includedir=${prefix}/include/ini_parser
 
 Name: ini_parser_static
 Version: @CMAKE_PROJECT_VERSION@
