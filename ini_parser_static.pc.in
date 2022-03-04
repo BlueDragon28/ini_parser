@@ -4,6 +4,7 @@ libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
 includedir=${prefix}/include/ini_parser
 
 Name: ini_parser_static
+Description: @PROJECT_DESCRIPTION@
 Version: @CMAKE_PROJECT_VERSION@
 Cflags: -I${includedir}
 Libs: -L${libdir} -lini_parser_static
