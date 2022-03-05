@@ -76,9 +76,9 @@ void ini_parser::parseFile()
 
         while (std::getline(file, line))
             parseLine(line, currentSection);
+        
+        parsingSuccess();
     }
-
-    parsingSuccess();
 }
 
 void ini_parser::parseData()
